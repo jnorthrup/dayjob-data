@@ -1,4 +1,4 @@
-fetch, decomopress:
+fetch, decompress:
 
 ```bash
 wget 'https://github.com/jnorthrup/dayjob-data/blob/master/superannuated1909.fwf.zst?raw=true'

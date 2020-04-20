@@ -40,3 +40,12 @@ Type "help", "copyright", "credits" or "license" for more information.
 ('TransMode', 3)
 >>> 
 ```
+
+
+## within columnar build directory
+
+to examine both scripts side-by-side, this is what i came up with prior to introducing 1.4-m1
+
+```
+export JAVA_HOME=/opt/jdk-15/ JAVA_OPTS=-Xmx512m ; time kotlinc-jvm -Xskip-metadata-version-check  -Xnew-inference   -cp $(find  ../cursor/target/ -name '*jar'|xargs -n999 echo|tr ' ' :) -script histogram.kts
+```

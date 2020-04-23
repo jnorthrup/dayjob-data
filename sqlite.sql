@@ -1,4 +1,4 @@
--- rm /tmp/sa.sqlite ; sqlite3 /tmp/sa.sqlite <sqlite.sql ;sqlite3 /tmp/sa.sqlite "select * from  superannuated1909 limit 2;"; ls -lh superannuated1909.fwf  /tmp/sa.sqlite
+-- rm /tmp/sa.sqlite ;time sqlite3 /tmp/sa.sqlite <sqlite.sql ;sqlite3 /tmp/sa.sqlite "select * from  superannuated1909 limit 2;"; ls -lh superannuated1909.fwf  /tmp/sa.sqlite
 
 
 CREATE TABLE fixed_width_table
@@ -7,7 +7,7 @@ CREATE TABLE fixed_width_table
 );
 .import superannuated1909.fwf fixed_width_table
 
-CREATE TABLE superannuated1909 AS
+CREATE virtual TABLE superannuated1909 AS
 Select
        CAST(SUBSTR(full_string, 1 + 0, 11 - 0) as NUMERIC)  AS 'SalesNo',
        SUBSTR(full_string, 1 + 11, 15 - 11)                 AS 'SalesAreaID',
@@ -17,4 +17,5 @@ Select
        CAST(SUBSTR(full_string, 1 + 60, 82 - 60) as float)  AS 'Quantity',
        CAST(SUBSTR(full_string, 1 + 82, 103 - 82) as float) AS 'Amount',
        SUBSTR(full_string, 1 + 103, 108 - 103)              AS 'TransMode'
-FROM fixed_width_table
+FROM fixed_width_table;
+-- drop table fixed_width_table;

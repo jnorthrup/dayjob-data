@@ -16,4 +16,9 @@ Select
        CAST(SUBSTR(full_string, 1 + 82, 103 - 82) as float) AS 'Amount',
        SUBSTR(full_string, 1 + 103, 108 - 103)              AS 'TransMode'
 FROM fixed_width_table;
--- drop table fixed_width_table;
+
+
+--
+-- jdbc2json  
+--  TYPES=['"VIEW"'] ../../jdbc2json/bin/jdbctocouchdbbulk.sh http://127.0.0.1:5984/foo1_ jdbc:sqlite:/tmp/sa.sqlite
+

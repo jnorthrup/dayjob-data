@@ -1,13 +1,11 @@
 -- rm /tmp/sa.sqlite ;time sqlite3 /tmp/sa.sqlite <sqlite.sql ;sqlite3 /tmp/sa.sqlite "select * from  superannuated1909 limit 2;"; ls -lh superannuated1909.fwf  /tmp/sa.sqlite
 
 
-CREATE TABLE fixed_width_table
-(
-    full_string CHAR
-);
+CREATE TABLE fixed_width_table ( full_string CHAR);
+
 .import superannuated1909.fwf fixed_width_table
 
-CREATE virtual TABLE superannuated1909 AS
+CREATE VIEW superannuated1909 as  
 Select
        CAST(SUBSTR(full_string, 1 + 0, 11 - 0) as NUMERIC)  AS 'SalesNo',
        SUBSTR(full_string, 1 + 11, 15 - 11)                 AS 'SalesAreaID',
